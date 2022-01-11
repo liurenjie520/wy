@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+	</head>
+	<script>
+		//https://v1.hitokoto.cn/?c=j
+		//https://weibo.com/ajax/side/hotSearch
+		fetch('https://v1.jinrishici.com/all.json')
+			.then(response => response.json())
+			.then(data => {
+				const content = document.getElementById('content44')
+				const origin = document.getElementById('origin')
+				const author = document.getElementById('author')
+
+				content.innerText = data.content
+				origin.innerText = data.origin
+				author.innerText = data.author
+			})
+			.catch(console.error)
+
+		fetch('https://v1.hitokoto.cn')
+			.then(response => response.json())
+			.then(data => {
+				const yiyan = document.getElementById('yiyan')
+				yiyan.innerText = data.hitokoto
+			})
+			.catch(console.error)
+
+		//			
+		//			
+
+		fetch('https://tenapi.cn/comment/')
+			.then(response => response.json())
+			.then(data => {
+				const content = document.getElementById('content')
+				const name = document.getElementById('name')
+				const song = document.getElementById('song')
+				console.log(content)
+
+				content.innerText = data.data.content
+				name.innerText = data.data.name
+				song.innerText = data.data.song
+			})
+			.catch(console.error)
+
+		fetch('https://keai.icu/apiwyy/api')
+			.then(response => response.json())
+			.then(data => {
+				const music = document.getElementById('music')
+				const content = document.getElementById('content23')
+				const user = document.getElementById('user')
+
+				//				console.log(content)
+
+				music.innerText = data.music
+				content.innerText = data.content
+				user.innerText = data.user
+
+			})
+			.catch(console.error)
+
+		fetch('https://api.66mz8.com/api/music.163.php?format=json')
+			.then(response => response.json())
+			.then(data => {
+				const name = document.getElementById('name2')
+				const nickname = document.getElementById('nickname')
+				const comments = document.getElementById('comments')
+
+				//				console.log(content)
+
+				name.innerText = data.name
+				nickname.innerText = data.nickname
+				comments.innerText = data.comments
+
+			})
+			.catch(console.error)
+
+		fetch('https://v1.hitokoto.cn/?c=j')
+			.then(response => response.json())
+			.then(data => {
+				const neirong = document.getElementById('neirong')
+				const from2 = document.getElementById('from2')
+				const from_who = document.getElementById('from_who')
+
+				neirong.innerText = data.hitokoto
+				from2.innerText = data.from
+				from_who.innerText = data.from_who
+			})
+			.catch(console.error)
+	</script>
+
+	<body>
+		<h1 align="center" id='yiyan'></h1>
+		<table border="1" align="center">
+
+			<tr>
+				<td>古诗</td>
+				<td id="content44" >row 1, cell 2</td>
+			</tr>
+			<tr>
+				<td>出处</td>
+				<td id="origin">row 2, cell 2</td>
+			</tr>
+			<tr>
+				<td>作者</td>
+				<td id="author">row 2, cell 2</td>
+			</tr>
+		</table>
+
+		<table border="1" align="center">
+
+			<tr>
+				<td>歌曲</td>
+				<td id="song">row 1, cell 2</td>
+			</tr>
+			<tr>
+				<td>评论</td>
+				<td id="content">row 2, cell 2</td>
+			</tr>
+			<tr>
+				<td>昵称</td>
+				<td id="name">row 2, cell 2</td>
+			</tr>
+		</table>
+
+		<table border="1" align="center">
+
+			<tr>
+				<td>歌曲</td>
+				<td id="music">row 1, cell 2</td>
+			</tr>
+			<tr>
+				<td>评论</td>
+				<td id="content23">row 2, cell 2</td>
+			</tr>
+			<tr>
+				<td>昵称</td>
+				<td id="user">row 2, cell 2</td>
+			</tr>
+		</table>
+
+		<table border="1" align="center">
+
+			<tr>
+				<td>歌曲</td>
+				<td id="name2">row 1, cell 2</td>
+			</tr>
+			<tr>
+				<td>评论</td>
+				<td id="comments">row 2, cell 2</td>
+			</tr>
+			<tr>
+				<td>昵称</td>
+				<td id="nickname">row 2, cell 2</td>
+			</tr>
+		</table>
+
+		<table border="1" align="center">
+
+			<tr>
+				<td>评论</td>
+				<td id="neirong">row 1, cell 2</td>
+			</tr>
+			<tr>
+				<td>出处</td>
+				<td id="from2">row 2, cell 2</td>
+			</tr>
+			<tr>
+				<td>昵称</td>
+				<td id="from_who">row 2, cell 2</td>
+			</tr>
+		</table>
+
+	</body>
+
+</html>
