@@ -29,7 +29,7 @@ body {
 
 @font-face {
   font-family: 'ziti';
-  src: url('ziti.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/liurenjie520/wenkaizuixiaottfwoff@wenkai/ziti.woff') format('woff');
   
   font-style: normal;
 }
