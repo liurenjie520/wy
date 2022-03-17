@@ -44,7 +44,7 @@
 
 			var textid = document.getElementById('textfield').value;
 			console.log(textid)
-			fetch("https://api.muxiaoguo.cn/api/163music?id=" + textid)
+			fetch("https://api.muxiaoguo.cn/api/163music?api_key=11f1d0fdae6fd3d1&id=" + textid)
 				.then((response) => response.json())
 				.then((data) => {
 					document.getElementById("createurl2").value = data.data.mp3url;
