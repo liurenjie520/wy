@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>读诗</title>
+    <style>
+        @font-face {
+            font-family: 'number_font';
+            src: url('https://fastly.jsdelivr.net/gh/liurenjie520/wenkaizuixiaottfwoff@wenkai/ziti.woff');
+        }
+        body{
+            margin: 0 auto;  
+            writing-mode: vertical-rl;
+            margin:0;
+            padding:0;
+            font-family:"Times New Roman",Times,serif;
+            color:#000000;
+            background:#f2e7ca;
+        }
+        ::content{
+            content: '\A';
+            white-space: pre;
+        }
+        #title{
+            font-size:30px;
+            font-family: 'number_font';
+            position: relative;
+            top: 15%;
+            right: 160px;
+        }
+        #author{
+            font-size:15px;
+            font-family: 'number_font';
+            position: relative;
+            top: 33%;
+            right: 190px; 
+        }
+        .content{
+            font-size:23px;
+            font-family: 'number_font';
+            position: relative;
+            top: 25%;
+            right: 270px;
+            margin-left: 3%; 
+
+        }
+    </style>
+</head>
+<body>
+    <div id="cnt"></div>
+</body>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script>
+    var str = ""
+
+    $.ajax({
+        type:"get",
+        url:"https://api.muxiaoguo.cn/api/163reping?api_key=f21d80c84331c877",
+        async:false,
+        success:function(data){
+            str=data;
+            console.log(str)
+        },
+        error:function(e){
+            msg=e;
+        }
+    });
+
+    var js = str
+//  console.log(js[0])
+    var title = js.data.songName
+    var author = js.data.nickname
+    var content = js.data.content
+
+    if(title.length > 15){
+        title = title.substring(0,10)+"..."+title.substring(title.length-6,title.length)
+    }
+    document.write("<div id = \"title\">"+ title+"</div>")
+    document.write("<div id = \"author\">"+ author+"</div>")
+    let reg = /[，|。]/
+    var list = content.split(reg)
+    if(list.length < 20){
+        for (let index = 0; index < list.length; index++) {
+            var element = list[index];
+            if(element == "") break
+            if (index % 2 == 0){
+                element += "，"
+            }else{
+                element += "。"
+            }
+            document.write("<div class = \"content\">"+ element+"</div>")           
+        }
+    }else{
+        var sentenceList = content.split("。")
+        for (let index = 0; index < sentenceList.length; index++) {
+            var element = sentenceList[index];
+            if(element == "") break
+            element += "。"
+            document.write("<div class = \"content\">"+ element+"</div>")           
+        }
+    }
+</script>
+</html>
